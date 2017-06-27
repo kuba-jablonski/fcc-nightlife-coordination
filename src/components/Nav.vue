@@ -27,6 +27,18 @@
                     </p>
                 </div>
             </div>
+            <div class="nav-item">
+                <div class="field is-grouped">
+                    <p class="control">
+                        <a @click="$store.commit('SHOW_REGISTER')" class="button">
+                            <span class="icon">
+                                <i class="fa fa-user-plus"></i>
+                            </span>
+                            <span>Register</span>
+                        </a>
+                    </p>
+                </div>
+            </div>            
         </div>
     </nav>
 </template>

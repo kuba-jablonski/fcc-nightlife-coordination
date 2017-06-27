@@ -5,14 +5,23 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        showLoginModal: false
+        modals: {
+            showLogin: false,
+            showRegister: false
+        }
     },
     mutations: {
         'SHOW_LOGIN'(state) {
-            state.showLoginModal = true;
+            state.modals.showLogin = true;
         },
         "HIDE_LOGIN"(state) {
-            state.showLoginModal = false;
+            state.modals.showLogin = false;
+        },
+        'SHOW_REGISTER'(state) {
+            state.modals.showRegister = true;
+        },
+        'HIDE_REGISTER'(state) {
+            state.modals.showRegister = false;
         }
     }
 }) 
