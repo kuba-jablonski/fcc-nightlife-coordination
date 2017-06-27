@@ -16,6 +16,9 @@ export default {
         appNav: Nav,
         appHero: Hero,
         appRegister: Register
+    },
+    created() {
+        this.$store.dispatch('watchUser');
     }
 }
 </script>

@@ -14,7 +14,7 @@
             </a>
         </div>
     
-        <div class="nav-right">
+        <div v-if="!$store.state.user" class="nav-right">
             <div class="nav-item">
                 <div class="field is-grouped">
                     <p class="control">
@@ -35,6 +35,21 @@
                                 <i class="fa fa-user-plus"></i>
                             </span>
                             <span>Register</span>
+                        </a>
+                    </p>
+                </div>
+            </div>            
+        </div>
+
+        <div v-else class="nav-right">
+            <div class="nav-item">
+                <div class="field is-grouped">
+                    <p class="control">
+                        <a @click="$store.dispatch('signOut')" class="button">
+                            <span class="icon">
+                                <i class="fa fa-sign-out"></i>
+                            </span>
+                            <span>Log out</span>
                         </a>
                     </p>
                 </div>

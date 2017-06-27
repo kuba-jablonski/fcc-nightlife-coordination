@@ -7,7 +7,7 @@
     
                 <div class="field">
                     <p class="control has-icons-left">
-                        <input class="input" type="email" placeholder="Email">
+                        <input v-model="credentials.email" class="input" type="email" placeholder="Email">
                         <span class="icon is-small is-left">
                             <i class="fa fa-envelope"></i>
                         </span>
@@ -16,7 +16,7 @@
     
                 <div class="field">
                     <p class="control has-icons-left">
-                        <input class="input" type="password" placeholder="Password">
+                        <input v-model="credentials.password" class="input" type="password" placeholder="Password">
                         <span class="icon is-small is-left">
                             <i class="fa fa-lock"></i>
                         </span>
@@ -25,7 +25,7 @@
     
                 <div class="field is-grouped">
                     <p class="control">
-                        <button class="button is-primary">Submit</button>
+                        <button @click="signUp" class="button is-primary">Submit</button>
                     </p>
                     <p class="control">
                         <button @click="$store.commit('HIDE_REGISTER')" class="button is-link">Cancel</button>
@@ -35,3 +35,25 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            credentials: {
+                email: '',
+                password: ''
+            }
+        }
+    },
+    methods: {
+        signUp() {
+            this.$store.dispatch('signUp', this.credentials)
+                .catch(e => console.log(e))
+                .then(() => {
+                    this.$store.commit('HIDE_REGISTER');
+                })
+        }
+    }
+}
+</script>
