@@ -45,6 +45,10 @@ export const store = new Vuex.Store({
         },
         signOut({commit}) {
             return firebase.auth().signOut();
+        },
+        logIn({commit}, credentials) {
+            const {email, password} = credentials;
+            return firebase.auth().signInWithEmailAndPassword(email, password);
         }
             
     }

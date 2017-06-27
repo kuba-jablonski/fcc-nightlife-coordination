@@ -18,7 +18,7 @@
             <div class="nav-item">
                 <div class="field is-grouped">
                     <p class="control">
-                        <a class="button">
+                        <a @click="$store.commit('SHOW_LOGIN')" class="button">
                             <span class="icon">
                                 <i class="fa fa-sign-in"></i>
                             </span>

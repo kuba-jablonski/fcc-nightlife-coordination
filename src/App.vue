@@ -1,6 +1,7 @@
 <template>
     <div>
         <app-register v-if="$store.state.modals.showRegister"></app-register>
+        <app-login v-if="$store.state.modals.showLogin"></app-login>
         <app-nav></app-nav>
         <app-hero></app-hero>
     </div>
@@ -10,12 +11,14 @@
 import Nav from './components/Nav.vue';
 import Hero from './components/Hero.vue';
 import Register from './components/modals/Register.vue';
+import Login from './components/modals/Login.vue';
 
 export default {
     components: {
         appNav: Nav,
         appHero: Hero,
-        appRegister: Register
+        appRegister: Register,
+        appLogin: Login
     },
     created() {
         this.$store.dispatch('watchUser');
