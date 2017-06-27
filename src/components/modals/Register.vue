@@ -23,6 +23,11 @@
                     </p>
                 </div>
     
+                <div v-if="error.show" @click="error.show = false" class="notification is-danger">
+                    <button class="delete"></button>
+                    {{ error.message }}
+                </div>
+    
                 <div class="field is-grouped">
                     <p class="control">
                         <button @click="signUp" class="button is-primary">Submit</button>
@@ -43,16 +48,24 @@ export default {
             credentials: {
                 email: '',
                 password: ''
+            },
+            error: {
+                message: '',
+                show: false
             }
         }
     },
     methods: {
         signUp() {
             this.$store.dispatch('signUp', this.credentials)
-                .catch(e => console.log(e))
+                .catch(e => Promise.reject(e))
                 .then(() => {
                     this.$store.commit('HIDE_REGISTER');
                 })
+                .catch(e => {
+                    this.error.message = e.message;
+                    this.error.show = true;
+                });
         }
     }
 }
