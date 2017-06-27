@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as firebase from 'firebase';
+import { yelp } from '../axios';
 
 Vue.use(Vuex);
 
@@ -49,7 +50,9 @@ export const store = new Vuex.Store({
         logIn({commit}, credentials) {
             const {email, password} = credentials;
             return firebase.auth().signInWithEmailAndPassword(email, password);
-        }
-            
+        },
+        searchYelp({commit}, location) {
+            yelp.get(`search?term=food&location=${location}`).then(r => console.log(r));
+        }            
     }
 }) 

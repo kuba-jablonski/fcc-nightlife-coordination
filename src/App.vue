@@ -13,15 +13,14 @@ import Hero from './components/Hero.vue';
 import Register from './components/modals/Register.vue';
 import Login from './components/modals/Login.vue';
 
+import { yelp } from './axios';
+
 export default {
     components: {
         appNav: Nav,
         appHero: Hero,
         appRegister: Register,
         appLogin: Login
-    },
-    created() {
-        this.$store.dispatch('watchUser');
     }
 }
 </script>
