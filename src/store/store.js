@@ -81,7 +81,7 @@ export const store = new Vuex.Store({
             firebase.auth().getRedirectResult();        
         },
         writeData({commit, state}) {
-            firebase.database().ref('bars').set({[state.pendingData]: 1})
+            firebase.database().ref('bars').set(state.pendingData)
                 .then(() => {
                     commit('SET_PENDING_DATA', null);
                 });
@@ -96,6 +96,13 @@ export const store = new Vuex.Store({
     getters: {
         getSearchResults(state) {
             return state.searchResults;
+        },
+        getChosenBars(state) {
+            if (state.chosenBars === null) {
+                return {};
+            }
+
+            return state.chosenBars;
         }
     },
     plugins: [createPersistedState()]

@@ -55,7 +55,15 @@ export default {
                 })
         },
         go() {
-            this.$store.commit('SET_PENDING_DATA', this.result.id);
+            let chosenBars = this.$store.getters.getChosenBars;
+
+            if (chosenBars !== null && typeof chosenBars === 'object' && chosenBars.hasOwnProperty(this.result.id)) {
+                chosenBars[this.result.id]++
+            } else {
+                chosenBars[this.result.id] = 1;
+            }
+
+            this.$store.commit('SET_PENDING_DATA', chosenBars);
             this.$store.dispatch('signInWithProvider');
         }
     },
