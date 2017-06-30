@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 import * as firebase from 'firebase';
+
 import { yelp } from '../axios';
 
 Vue.use(Vuex);
@@ -12,7 +14,8 @@ export const store = new Vuex.Store({
             showRegister: false
         },
         user: null,
-        searchResults: null
+        searchResults: null,
+        pendingData: null
     },
     mutations: {
         'SHOW_LOGIN'(state) {
@@ -74,5 +77,6 @@ export const store = new Vuex.Store({
         getSearchResults(state) {
             return state.searchResults;
         }
-    }
-}) 
+    },
+    plugins: [createPersistedState()]
+}); 
