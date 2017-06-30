@@ -55,6 +55,7 @@ export default {
                 })
         },
         go() {
+            this.$store.commit('SET_PENDING_DATA', this.result.id);
             this.$store.dispatch('signInWithProvider');
         }
     },

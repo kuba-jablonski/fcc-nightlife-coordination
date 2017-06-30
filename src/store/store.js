@@ -15,7 +15,8 @@ export const store = new Vuex.Store({
         },
         user: null,
         searchResults: null,
-        pendingData: null
+        pendingData: null,
+        chosenBars: null
     },
     mutations: {
         'SHOW_LOGIN'(state) {
@@ -35,13 +36,20 @@ export const store = new Vuex.Store({
         },
         'SEARCH_RESULTS'(state, results) {
             state.searchResults = results;
-        } 
+        },
+        'SET_PENDING_DATA'(state, id) {
+            state.pendingData = id;
+        },
+        'SET_CHOSEN_BARS'(state, data) {
+            state.chosenBars = data;
+        }
     },
     actions: {
-        watchUser({commit}) {
+        watchUser({commit, dispatch}) {
             firebase.auth().onAuthStateChanged((user) => {
                 if(user) {
                     commit('SET_USER', user);
+                    dispatch('writeData');
                 } else {
                     commit('SET_USER', null);
                 }
@@ -71,6 +79,18 @@ export const store = new Vuex.Store({
         },
         watchRedirect({commit}) {
             firebase.auth().getRedirectResult();        
+        },
+        writeData({commit, state}) {
+            firebase.database().ref('bars').set({[state.pendingData]: 1})
+                .then(() => {
+                    commit('SET_PENDING_DATA', null);
+                });
+        },
+        dbListen({commit}) {
+            firebase.database().ref('bars')
+                .on('value', snapshot => {
+                    commit('SET_CHOSEN_BARS', snapshot.val());
+                });
         }            
     },
     getters: {

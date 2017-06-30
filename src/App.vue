@@ -26,6 +26,7 @@ export default {
     created() {
         this.$store.dispatch('watchUser');
         this.$store.dispatch('watchRedirect');
+        this.$store.dispatch('dbListen');
     }
 }
 </script>
