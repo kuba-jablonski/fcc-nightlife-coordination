@@ -61,6 +61,13 @@ export const store = new Vuex.Store({
                     console.log(response);
                     commit('SEARCH_RESULTS', response.data.businesses);
                 });
+        },
+        signInWithProvider({commit}) {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider);
+        },
+        watchRedirect({commit}) {
+            firebase.auth().getRedirectResult();        
         }            
     },
     getters: {

@@ -9,18 +9,12 @@
             <div class="content">
                 <p>
                     <strong>{{ result.name }}</strong>
-                    <small>@johnsmith</small>
-                    <small>31m</small>
+                    <span @click="go" class="tag is-success">Success</span>
                     <br>  {{ review }} 
                 </p>
             </div>
             <nav class="level is-mobile">
                 <div class="level-left">
-                    <a class="level-item">
-                        <span class="icon is-small">
-                            <i class="fa fa-reply"></i>
-                        </span>
-                    </a>
                     <a class="level-item">
                         <span class="icon is-small">
                             <i class="fa fa-retweet"></i>
@@ -59,6 +53,9 @@ export default {
                 .catch(e => {
                     this.review = 'No review to display.';
                 })
+        },
+        go() {
+            this.$store.dispatch('signInWithProvider');
         }
     },
     created() {
@@ -66,3 +63,9 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.tag {
+    cursor: pointer;
+}
+</style>
