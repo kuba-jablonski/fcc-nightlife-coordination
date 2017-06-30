@@ -80,8 +80,22 @@ export const store = new Vuex.Store({
         watchRedirect({commit}) {
             firebase.auth().getRedirectResult();        
         },
-        writeData({commit, state}) {
-            firebase.database().ref('bars').set(state.pendingData)
+        writeData({commit, state, getters}) {
+            let chosenBars = getters.getChosenBars;
+
+            if (chosenBars.hasOwnProperty(state.pendingData)) {
+                const i = chosenBars[state.pendingData].indexOf(state.user.uid);
+
+                if (i === -1) {
+                    chosenBars[state.pendingData].push(state.user.uid);
+                } else {
+                    chosenBars[state.pendingData].splice(i, 1);
+                }
+            } else {
+                chosenBars[state.pendingData] = [state.user.uid];
+            }
+
+            firebase.database().ref('bars').set(chosenBars)
                 .then(() => {
                     commit('SET_PENDING_DATA', null);
                 });
