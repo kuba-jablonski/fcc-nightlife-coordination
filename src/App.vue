@@ -1,7 +1,5 @@
 <template>
     <div>
-        <app-register v-if="$store.state.modals.showRegister"></app-register>
-        <app-login v-if="$store.state.modals.showLogin"></app-login>
         <app-nav></app-nav>
         <app-hero></app-hero>
         <app-search-results></app-search-results>
