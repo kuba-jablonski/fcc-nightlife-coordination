@@ -9,7 +9,7 @@
             <div class="content">
                 <p>
                     <strong>{{ result.name }}</strong>
-                    <span @click="go" class="tag is-success">Success</span>
+                    <span @click="go" class="tag is-success">{{ usersGoing }} going</span>
                     <br>  {{ review }} 
                 </p>
             </div>
@@ -56,7 +56,22 @@ export default {
         },
         go() {
             this.$store.commit('SET_PENDING_DATA', this.result.id);
-            this.$store.dispatch('signInWithProvider');
+            if (!this.$store.state.user) {
+                this.$store.dispatch('signInWithProvider');
+            } else {
+                this.$store.dispatch('writeData');
+            }
+        }
+    },
+    computed: {
+        usersGoing() {
+            let bars = this.$store.getters.getChosenBars;
+
+            if (bars.hasOwnProperty(this.result.id)) {
+                return bars[this.result.id].length;
+            }
+
+            return 0;
         }
     },
     created() {
