@@ -4,17 +4,33 @@
         <br>
         <div class="field has-addons">
             <p class="control">
-                <input class="input" type="text" placeholder="Search...">
+                <input v-model="location" class="input" type="text" placeholder="Search...">
             </p>
             <br>
             <p class="control">
-                <a class="button is-info">
+                <a @click="search" class="button is-info">
                     Search
                 </a>
             </p>
         </div>
     </main>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            location: ''
+        }
+    },
+    methods: {
+        search() {
+            this.$store.dispatch('searchYelp', this.location);
+        }
+    }
+}
+</script>
+
 
 <style lang="scss">
 .section {

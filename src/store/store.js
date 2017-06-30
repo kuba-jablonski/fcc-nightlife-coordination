@@ -11,7 +11,8 @@ export const store = new Vuex.Store({
             showLogin: false,
             showRegister: false
         },
-        user: null
+        user: null,
+        searchResults: null
     },
     mutations: {
         'SHOW_LOGIN'(state) {
@@ -28,6 +29,9 @@ export const store = new Vuex.Store({
         },
         'SET_USER'(state, user) {
             state.user = user;
+        },
+        'SEARCH_RESULTS'(state, results) {
+            state.searchResults = results;
         } 
     },
     actions: {
@@ -52,7 +56,16 @@ export const store = new Vuex.Store({
             return firebase.auth().signInWithEmailAndPassword(email, password);
         },
         searchYelp({commit}, location) {
-            yelp.get(`search?term=food&location=${location}`).then(r => console.log(r));
+            yelp.get(`search?term=bar&location=${location}`)
+                .then(response => {
+                    console.log(response);
+                    commit('SEARCH_RESULTS', response.data.businesses);
+                });
         }            
+    },
+    getters: {
+        getSearchResults(state) {
+            return state.searchResults;
+        }
     }
 }) 
