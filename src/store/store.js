@@ -55,18 +55,20 @@ export const store = new Vuex.Store({
         },
         writeData({commit, state, getters}) {
             let chosenBars = getters.getChosenBars;
+            let data = state.pendingData;
+            let id = state.user.uid;
 
-            if (state.pendingData !== null) {
-                if (chosenBars.hasOwnProperty(state.pendingData)) {
-                    const i = chosenBars[state.pendingData].indexOf(state.user.uid);
+            if (data !== null) {
+                if (chosenBars.hasOwnProperty(data)) {
+                    const i = chosenBars[data].indexOf(id);
 
                     if (i === -1) {
-                        chosenBars[state.pendingData].push(state.user.uid);
+                        chosenBars[data].push(id);
                     } else {
-                        chosenBars[state.pendingData].splice(i, 1);
+                        chosenBars[data].splice(i, 1);
                     }
                 } else {
-                    chosenBars[state.pendingData] = [state.user.uid];
+                    chosenBars[data] = [id];
                 }
 
                 firebase.database().ref('bars').set(chosenBars)
