@@ -1,24 +1,17 @@
 <template>
     <div>
-        <app-nav></app-nav>
         <app-hero></app-hero>
         <app-search-results></app-search-results>
     </div>
 </template>
 
 <script>
-import Nav from './components/Nav.vue';
 import Hero from './components/Hero.vue';
-import Register from './components/modals/Register.vue';
-import Login from './components/modals/Login.vue';
 import SearchResults from './components/search/SearchResults.vue';
 
 export default {
     components: {
-        appNav: Nav,
         appHero: Hero,
-        appRegister: Register,
-        appLogin: Login,
         appSearchResults: SearchResults
     },
     created() {
