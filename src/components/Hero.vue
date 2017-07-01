@@ -1,21 +1,5 @@
 <template>
-    <!--<main class="section container is-flex">
-                            <h1>Search for your location</h1>
-                            <br>
-                            <div class="field has-addons">
-                                <p class="control">
-                                    <input v-model="location" class="input" type="text" placeholder="Search...">
-                                </p>
-                                <br>
-                                <p class="control">
-                                    <a @click="search" class="button is-info">
-                                        Search
-                                    </a>
-                                </p>
-                            </div>
-                        </main>-->
-    
-    <section class="hero is-primary is-bold is-medium">
+    <section class="hero is-primary is-medium">
         <div v-if="user" class="hero-head">
             <header class="nav">
                 <div class="container">

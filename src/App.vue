@@ -1,7 +1,7 @@
 <template>
     <div>
         <app-hero></app-hero>
-        <app-search-results></app-search-results>
+        <app-search-results v-if="$store.state.searchResults"></app-search-results>
     </div>
 </template>
 
@@ -23,12 +23,14 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~bulma/sass/utilities/initial-variables";
-$primary: #333399;
-$success: #993399;
-
+@import './assets/styles/settings.scss';
 @import '~bulma/bulma.sass';
+
+html {
+    height: 100%;
+}
 body {
+    min-height: 100%;
     background-color: #e6f2ff;
 }
 </style>

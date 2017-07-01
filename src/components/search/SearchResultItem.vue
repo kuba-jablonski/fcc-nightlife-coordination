@@ -9,27 +9,16 @@
             <div class="content">
                 <p>
                     <strong>{{ result.name }}</strong>
-                    <span @click="go" class="tag is-success">{{ usersGoing }} going</span>
-                    <br>  {{ review }} 
+                    <br> {{ review }}
                 </p>
             </div>
             <nav class="level is-mobile">
                 <div class="level-left">
                     <a class="level-item">
-                        <span class="icon is-small">
-                            <i class="fa fa-retweet"></i>
-                        </span>
-                    </a>
-                    <a class="level-item">
-                        <span class="icon is-small">
-                            <i class="fa fa-heart"></i>
-                        </span>
+                        <span @click="go" class="tag is-success">{{ usersGoing }} going</span>
                     </a>
                 </div>
             </nav>
-        </div>
-        <div class="media-right">
-            <button class="delete"></button>
         </div>
     </article>
 </template>
@@ -81,14 +70,20 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../assets/styles/settings.scss';
+
 .tag {
     cursor: pointer;
 }
-img {
-    width: 100%;
-    height: 100%;
-}
 .image {
-    border: 1px solid $primary;
+    top: 7px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+p {
+    font-size: 1rem
 }
 </style>
