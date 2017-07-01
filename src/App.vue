@@ -2,17 +2,20 @@
     <div>
         <app-hero></app-hero>
         <app-search-results v-if="$store.state.searchResults"></app-search-results>
+        <app-details v-else></app-details>
     </div>
 </template>
 
 <script>
 import Hero from './components/Hero.vue';
 import SearchResults from './components/search/SearchResults.vue';
+import Details from './components/Details.vue';
 
 export default {
     components: {
         appHero: Hero,
-        appSearchResults: SearchResults
+        appSearchResults: SearchResults,
+        appDetails: Details
     },
     created() {
         this.$store.dispatch('watchUser');

@@ -26,9 +26,12 @@
                     Nightlife Coordination
                 </h1>
                 <br>
+                <p class="subtitle is-5">
+                    Where are you heading out tonight?
+                </p>
                 <div class="field has-addons">
                     <p class="control">
-                        <input v-model="location" class="input" type="text" placeholder="Search...">
+                        <input v-model="location" class="input" type="text" placeholder="Search for location..">
                     </p>
                     <br>
                     <p class="control">
@@ -67,5 +70,8 @@ export default {
 #hero {
     flex-direction: column;
     align-items: center;
+}
+.hero {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 </style>
