@@ -1,5 +1,5 @@
 <template>
-    <section class="section container box">
+    <section id="results" class="section container box">
         <app-search-result-item 
         v-for="result in searchResults"
         :key="result.id"
@@ -22,3 +22,11 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+@media (min-width: 769px) {
+    #results {
+        top: -40px
+    }
+}
+</style>

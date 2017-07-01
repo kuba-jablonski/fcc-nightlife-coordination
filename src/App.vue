@@ -23,5 +23,12 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~bulma/sass/utilities/initial-variables";
+$primary: #333399;
+$success: #993399;
+
 @import '~bulma/bulma.sass';
+body {
+    background-color: #e6f2ff;
+}
 </style>

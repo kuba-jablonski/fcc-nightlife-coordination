@@ -1,7 +1,7 @@
 <template>
     <article class="media">
         <figure class="media-left">
-            <p class="image is-64x64">
+            <p class="image is-96x96">
                 <img :src="result.image_url">
             </p>
         </figure>
@@ -80,8 +80,15 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .tag {
     cursor: pointer;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+.image {
+    border: 1px solid $primary;
 }
 </style>

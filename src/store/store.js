@@ -50,6 +50,9 @@ export const store = new Vuex.Store({
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth().signInWithRedirect(provider);
         },
+        signOut({commit}) {
+            firebase.auth().signOut();
+        }, 
         watchRedirect({commit}) {
             firebase.auth().getRedirectResult();        
         },
@@ -94,6 +97,9 @@ export const store = new Vuex.Store({
             }
 
             return state.chosenBars;
+        },
+        getUser(state) {
+            return state.user;
         }
     },
     plugins: [createPersistedState({storage: window.sessionStorage})]
