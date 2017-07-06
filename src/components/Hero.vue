@@ -46,6 +46,8 @@
 </template>
 
 <script>
+import { yelp } from '../axios';
+
 export default {
     data() {
         return {
@@ -54,7 +56,10 @@ export default {
     },
     methods: {
         search() {
-            this.$store.dispatch('searchYelp', this.location);
+            yelp.get(`search?term=bar&location=${this.location}`)
+                .then(response => {
+                    this.$store.commit('SEARCH_RESULTS', response.data.businesses);
+                });
         }
     },
     computed: {

@@ -39,13 +39,6 @@ export const store = new Vuex.Store({
                 }
             })
         },
-        searchYelp({commit}, location) {
-            yelp.get(`search?term=bar&location=${location}`)
-                .then(response => {
-                    console.log(response);
-                    commit('SEARCH_RESULTS', response.data.businesses);
-                });
-        },
         signInWithProvider({commit}) {
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth().signInWithRedirect(provider);
