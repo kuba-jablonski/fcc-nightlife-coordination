@@ -35,7 +35,7 @@
                     </p>
                     <br>
                     <p class="control">
-                        <a @click="search" class="button is-success">
+                        <a @click="search" :class="{'is-loading': loading}" class="button is-success">
                             Search
                         </a>
                     </p>
@@ -51,14 +51,17 @@ import { yelp } from '../axios';
 export default {
     data() {
         return {
-            location: ''
+            location: '',
+            loading: false
         }
     },
     methods: {
         search() {
+            this.loading = true;
             yelp.get(`search?term=bar&location=${this.location}`)
                 .then(response => {
                     this.$store.commit('SEARCH_RESULTS', response.data.businesses);
+                    this.loading = false;
                 });
         }
     },
