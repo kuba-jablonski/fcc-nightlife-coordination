@@ -31,11 +31,11 @@
                 </p>
                 <div class="field has-addons">
                     <p class="control">
-                        <input v-model="location" class="input" type="text" placeholder="Search for location..">
+                        <input @keypress.enter="search" v-model="location" class="input" type="text" placeholder="Search for location..">
                     </p>
                     <br>
                     <p class="control">
-                        <a @click="search" @keypress.enter="search" :class="{'is-loading': loading}" class="button is-success">
+                        <a @click="search" :class="{'is-loading': loading}" class="button is-success">
                             Search
                         </a>
                     </p>
