@@ -35,7 +35,7 @@
                     </p>
                     <br>
                     <p class="control">
-                        <a @click="search" :class="{'is-loading': loading}" class="button is-success">
+                        <a @click="search" @keypress.enter="search" :class="{'is-loading': loading}" class="button is-success">
                             Search
                         </a>
                     </p>
