@@ -8,7 +8,7 @@
         <div class="media-content">
             <div class="content">
                 <p>
-                    <strong>{{ result.name }}</strong>
+                    <strong><a :href="result.url" target="_blank">{{ result.name }}</a></strong>
                     <br> {{ review }}
                 </p>
             </div>
@@ -37,7 +37,7 @@ export default {
         getReview() {
             yelp.get(`${this.result.id}/reviews`)
                 .then(response => {
-                    this.review = response.data.reviews[Math.floor(Math.random() * 3)].text
+                    this.review = response.data.reviews[0].text
                 })
                 .catch(e => {
                     this.review = 'No review to display.';
